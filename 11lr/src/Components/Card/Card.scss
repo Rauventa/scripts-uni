@@ -1,0 +1,24 @@
+.card {
+    box-shadow: 0 0 5px 0 #ccc;
+    margin-bottom: 30px;
+    .card-body {
+        width: 100%;
+        min-height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        .indicator {
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            border: 2px solid #ccc;
+        }
+        .active {
+            background-color: green;
+        }
+        .danger {
+            background-color: red;
+        }
+    }
+}

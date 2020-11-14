@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+}
+
+a {
+  color: #8C3243;
+  transition-duration: .3s;
+  &:hover {
+    color: #D996A2;
+  }
+}
+
+.btn-danger {
+  background-color: #8C3243;
+  border: 1px solid #8C3243;
+  &:hover {
+    background-color: #D996A2;
+    border: 1px solid #D996A2;
+  }
+}
+
+.btn-primary {
+  background-color: #8C3243;
+  border: 1px solid #8C3243;
+  &:hover {
+    background-color: #D996A2;
+    border: 1px solid #D996A2;
+  }
+}
+
+.App {
+  .Layout {
+    .navigation {
+      padding: 0;
+      .navbar {
+        min-height: 7vh;
+      }
+      a {
+        font-size: 16px;
+      }
+    }
+    .content {
+      background: linear-gradient(180deg, #8C3243 0%, #D996A2 62.5%);
+      min-height: 93vh;
+
+      //content containers
+
+      .Information {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 93vh;
+        text-align: center;
+        color: #fff;
+        h2 {
+          margin-bottom: 1rem;
+          font-weight: 700;
+        }
+        p {
+          font-size: 16px;
+        }
+      }
+
+      .Edit, .Add {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 93vh;
+        .card {
+          width: 80%;
+          .card-header {
+            font-weight: bold;
+            background-color: #fff;
+            border-bottom: 1px solid #dcdcdc;
+            color: #505050;
+            margin: 0 1.5rem;
+            padding: 1rem 0;
+            font-size: 18px;
+          }
+        }
+      }
+
+      .Persons {
+        min-height: 93vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem;
+        margin: 0 auto;
+        .filters {
+          width: 80%;
+          margin-bottom: 2rem;
+          .form-group {
+            margin-bottom: 0;
+            display: flex;
+            button {
+              margin-left: 1rem;
+            }
+          }
+        }
+        .persons-list {
+          width: 80%;
+          .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .card-body {
+            .row {
+              justify-content: flex-start;
+              .Person {
+                margin-left: 1rem;
+                .card {
+                  span {
+                    font-weight: bold;
+                  }
+                  .buttons {
+                    margin: 1rem;
+                    button {
+                      margin-right: 1rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
