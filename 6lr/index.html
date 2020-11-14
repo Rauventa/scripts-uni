@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Лабораторная работа 6</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #viewport {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      .krot-box {
+        width: 33vh;
+        height: 15vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .krot {
+        cursor: pointer;
+        width: 10vw;
+        height: 10vw;
+        background: black;
+        border-radius: 50%;
+        background-size: contain;
+      }
+      .visible {
+        background-image: url("./krot.png");
+      }
+      #score {
+        position: absolute;
+        top: 3%;
+        left: 3%;
+        width: 15vh;
+        height: 10vh;
+        background: lightblue;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+    </style>
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <div id="viewport">
+      <div id="score"></div>
+    </div>
+  </body>
+</html>
