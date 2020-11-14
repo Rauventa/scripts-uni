@@ -1,0 +1,29 @@
+.Layout {
+
+  &__nav {
+    padding: 2rem;
+    background-color: $light-bgc;
+    display: flex;
+    align-items: center;
+
+    &_logo {
+      margin-right: 2rem;
+    }
+
+    &_menu {
+      display: flex;
+      align-items: center;
+
+      .menuItem {
+
+        &:not(:last-child) {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+
+  &__content {
+    padding: 2rem;
+  }
+}
