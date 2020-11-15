@@ -10,9 +10,11 @@ export function renderShop() {
                 return {
                     ...item[1],
                     id: item[0],
-                    key: index
+                    key: item[0]
                 }
             });
+
+            dataContent.sort((a, b) => a.status - b.status);
 
             dispatch(renderShopSuccess(dataContent))
 

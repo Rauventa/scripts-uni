@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Button, Input, Switch, Table} from "antd";
+import {Button, Input, Modal, Switch, Table} from "antd";
 import axios from 'axios';
 import {connect} from "react-redux";
 import {renderShop} from "../../store/actions/shopActions";
@@ -9,6 +9,11 @@ const Shop = (props) => {
     const [addCheck, setAddCheck] = useState(false);
     const [name, setName] = useState('');
     const [count, setCount] = useState(null);
+    // const [checked, setChecked] = useState();
+    const [changeName, setChangeName] = useState('');
+    const [changeCount, setChangeCount] = useState(null);
+    const [modal, setModal] = useState(false);
+    const [currentModal, setCurrentModal] = useState({});
     const [styles, setStyles] = useState([]);
 
     // Осталось - редактирование, изменение цета карточки при статусе, свитчер статуса и рассположение купленых вверху таблицы (1.5 часа)
@@ -48,7 +53,7 @@ const Shop = (props) => {
             key: 'actions',
             render: (text, record) => (
                 <div className={'column-actions'}>
-                    <i className="far fa-edit"/>
+                    <i className="far fa-edit" onClick={() => editModal(record)}/>
                     <i className="fas fa-trash-alt" onClick={() => deleteShop(record.id)}/>
                 </div>
             ),
@@ -80,6 +85,8 @@ const Shop = (props) => {
         try {
             await axios.delete(`https://rauventa-scripts-exam.firebaseio.com/shop/${id}.json`);
 
+            setModal(false);
+
             props.renderShop();
         } catch (e) {
             console.log(e)
@@ -89,20 +96,55 @@ const Shop = (props) => {
     const changeStatusHandler = async (id, status, name, count) => {
         try {
 
-            const newStatus = !status;
-
             await axios.put(`https://rauventa-scripts-exam.firebaseio.com/shop/${id}.json`, {
                 count,
                 name,
-                status: newStatus
-            })
+                status: !status
+            });
+
+            props.renderShop();
         } catch (e) {
             console.log(e)
         }
     };
 
+    const closeModal = () => {
+        setModal(false)
+    };
+
+    const editModal = (record) => {
+        setModal(true);
+
+        setCurrentModal(record);
+
+        setChangeCount(record.count);
+
+        setChangeName(record.name);
+    };
+
   return (
       <div className={'Shop'}>
+
+          {Object.keys(currentModal).length !== 0 ?
+              <Modal
+                  visible={modal}
+                  onOk={closeModal}
+                  onCancel={closeModal}
+                  footer={[
+                      <Button disabled={(changeName === '' || changeCount === '')}>Save changes</Button>,
+                      <Button onClick={() => deleteShop(currentModal.id)}>Delete</Button>,
+                      <Button onClick={closeModal}>Cancel</Button>
+                  ]}
+              >
+                  <div className="modal">
+                      <h1>Hello</h1>
+
+                      <Input placeholder="Name" value={changeName} onChange={(e) => setChangeName(e.target.value)} />
+                      <Input placeholder="Count" value={changeCount} onChange={(e) => setChangeCount(e.target.value)} />
+                  </div>
+              </Modal> : null
+          }
+
 
           <div className="Shop__header">
               <Button type={'primary'} onClick={switchAddCheck}>Add new item</Button>
@@ -127,6 +169,7 @@ const Shop = (props) => {
                   <Table
                       dataSource={props.shop}
                       columns={columns}
+                      rowClassName={(record, index) => record.status ? 'disabled' : 'active'}
                   /> :
                   <h3>Your file is empty now</h3>
               }

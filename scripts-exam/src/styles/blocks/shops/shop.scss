@@ -7,6 +7,23 @@
   }
 
   &__content {
+    .ant-table {
+      table {
 
+        tbody {
+          .active {
+            &>td {
+              background-color: green;
+            }
+          }
+
+          .disabled {
+            &>td {
+              background-color: #fff;
+            }
+          }
+        }
+      }
+    }
   }
 }
