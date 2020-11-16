@@ -18,7 +18,7 @@ class Edit extends Component {
 
     async componentDidMount() {
         try {
-            const response  = await axios.get(`https://starikova-scripts.firebaseio.com/persons/${this.props.match.params.id}.json`);
+            const response  = await axios.get(`https://lr-10f95.firebaseio.com/persons/${this.props.match.params.id}.json`);
             const data = response.data;
             this.setState({
                 name: data.name,
@@ -64,7 +64,7 @@ class Edit extends Component {
 
     editPerson = async () => {
         try {
-            await axios.put(`https://starikova-scripts.firebaseio.com/persons/${this.props.match.params.id}.json`, {
+            await axios.put(`https://lr-10f95.firebaseio.com/persons/${this.props.match.params.id}.json`, {
                 name: this.state.name,
                 surName: this.state.surName,
                 patronymic: this.state.patronymic,
@@ -81,7 +81,7 @@ class Edit extends Component {
 
     deletePerson = async () => {
         try {
-            await axios.delete(`https://starikova-scripts.firebaseio.com/persons/${this.props.match.params.id}.json`);
+            await axios.delete(`https://lr-10f95.firebaseio.com/persons/${this.props.match.params.id}.json`);
             this.props.history.push('/')
         } catch (e) {
             console.log(e)

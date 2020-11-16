@@ -46,7 +46,7 @@ class Add extends Component {
 
     addNewPerson = async () => {
         try {
-            await axios.post('https://starikova-scripts.firebaseio.com/persons.json', this.state);
+            await axios.post('https://lr-10f95.firebaseio.com/persons.json', this.state);
         } catch (e) {
             console.log(e)
         }

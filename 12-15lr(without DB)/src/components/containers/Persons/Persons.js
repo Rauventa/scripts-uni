@@ -13,7 +13,7 @@ class Persons extends Component {
 
     async componentDidMount() {
         try {
-            const response  = await axios.get('https://starikova-scripts.firebaseio.com/persons.json');
+            const response  = await axios.get('https://lr-10f95.firebaseio.com/persons.json');
             const persons = Object.entries(response.data).map((person) => {
                 return {
                     personId: person[0],

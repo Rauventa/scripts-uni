@@ -20,7 +20,7 @@ class Person extends Component {
 
     deletePerson = async () => {
         try {
-            await axios.delete(`https://starikova-scripts.firebaseio.com/persons/${this.props.id}.json`);
+            await axios.delete(`https://lr-10f95.firebaseio.com/persons/${this.props.id}.json`);
             this.setState({show: false});
             window.location.reload();
         } catch (e) {
